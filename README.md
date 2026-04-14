@@ -117,6 +117,3 @@ If your environment supports `pdo_sqlite` and you prefer SQLite for tests, you c
 - `resources/js/task-board.js`
 - `tests/Feature/TaskManagementTest.php`
 
-## GitHub Repository Link
-
-No GitHub remote is attached from this environment yet. The project can be pushed after connecting a repository, and a local commit history has been prepared to make that straightforward.
