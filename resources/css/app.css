@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,6 +7,139 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    body {
+        min-height: 100vh;
+        background:
+            radial-gradient(circle at top left, rgba(253, 186, 116, 0.16), transparent 32%),
+            radial-gradient(circle at top right, rgba(45, 212, 191, 0.14), transparent 28%),
+            linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+        color: #14213d;
+    }
+}
+
+@layer components {
+    .page-shell {
+        @apply mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8;
+    }
+
+    .hero-panel {
+        @apply relative overflow-hidden rounded-[2rem] border border-white/70 bg-slate-950 px-6 py-8 text-white shadow-[0_28px_80px_rgba(15,23,42,0.28)] sm:px-8 lg:px-10;
+    }
+
+    .hero-panel::before {
+        content: '';
+        position: absolute;
+        inset: auto -6rem -6rem auto;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(45, 212, 191, 0.45), transparent 70%);
+    }
+
+    .hero-panel::after {
+        content: '';
+        position: absolute;
+        inset: -4rem auto auto -4rem;
+        width: 12rem;
+        height: 12rem;
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(251, 146, 60, 0.35), transparent 72%);
+    }
+
+    .metric-card {
+        @apply rounded-[1.6rem] border border-slate-200/80 bg-white/90 p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)] backdrop-blur;
+    }
+
+    .toolbar-panel {
+        @apply rounded-[1.6rem] border border-slate-200/80 bg-white/90 p-4 shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur sm:p-5;
+    }
+
+    .board-column {
+        @apply rounded-[1.75rem] border border-slate-200/80 bg-white/80 p-4 shadow-[0_18px_40px_rgba(15,23,42,0.06)] backdrop-blur;
+    }
+
+    .task-card {
+        @apply rounded-[1.35rem] border border-slate-200/80 bg-white p-4 shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition duration-200;
+    }
+
+    .task-card:hover {
+        @apply -translate-y-0.5 border-slate-300 shadow-[0_20px_40px_rgba(15,23,42,0.10)];
+    }
+
+    .task-card.is-overdue {
+        @apply border-rose-200 bg-rose-50/70;
+    }
+
+    .status-chip {
+        @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-[0.18em] uppercase;
+    }
+
+    .status-chip.status-pending {
+        @apply bg-amber-100 text-amber-900;
+    }
+
+    .status-chip.status-in_progress {
+        @apply bg-cyan-100 text-cyan-900;
+    }
+
+    .status-chip.status-completed {
+        @apply bg-emerald-100 text-emerald-900;
+    }
+
+    .priority-chip {
+        @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+    }
+
+    .priority-chip.priority-high {
+        @apply bg-rose-100 text-rose-900;
+    }
+
+    .priority-chip.priority-medium {
+        @apply bg-orange-100 text-orange-900;
+    }
+
+    .priority-chip.priority-low {
+        @apply bg-teal-100 text-teal-900;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center rounded-full border border-rose-200 bg-rose-50 px-4 py-2.5 text-sm font-semibold text-rose-900 transition hover:border-rose-300 hover:bg-rose-100;
+    }
+
+    .form-control {
+        @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-2 focus:ring-slate-200;
+    }
+
+    .modal-scrim {
+        @apply fixed inset-0 z-50 bg-slate-950/55 px-4 py-6 backdrop-blur-sm;
+    }
+
+    .modal-panel {
+        @apply mx-auto w-full max-w-2xl rounded-[2rem] border border-white/70 bg-white p-6 shadow-[0_35px_100px_rgba(15,23,42,0.35)] sm:p-8;
+    }
+
+    .filter-pill {
+        @apply inline-flex items-center rounded-full border border-transparent px-4 py-2 text-sm font-semibold text-slate-600 transition;
+    }
+
+    .filter-pill.is-active {
+        @apply border-slate-950 bg-slate-950 text-white;
+    }
+
+    .board-empty-state {
+        @apply rounded-[1.2rem] border border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-center text-sm text-slate-500;
+    }
 }
