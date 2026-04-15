@@ -62,7 +62,6 @@ $(function () {
         $form.trigger('reset');
         $('#task_id').val('');
         $('#modal-title').text('Create a task');
-        $('#modal-copy').text('Capture what the team needs to do next and keep the board moving.');
         clearErrors();
         $('[name="status"]').val('pending');
         $('[name="priority"]').val('medium');

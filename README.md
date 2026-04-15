@@ -1,6 +1,4 @@
-# Taskify
-
-Taskify is a simple task management system for teams built with Laravel and jQuery. It provides a clean shared board for capturing work, updating progress, tracking overdue items, and keeping daily execution organized without a heavy workflow.
+It is a simple task management system for teams built with Laravel and jQuery. It provides a clean shared board for capturing work, updating progress, tracking overdue items, and keeping daily execution organized without a heavy workflow.
 
 ## Features
 
@@ -21,7 +19,6 @@ Taskify is a simple task management system for teams built with Laravel and jQue
 - Blade
 - Vite
 - Tailwind CSS 4
-- PHPUnit 12
 
 ## Setup Instructions
 
@@ -89,31 +86,9 @@ Run the test suite with:
 php artisan test
 ```
 
-### Testing Database Note
-
-The local development environment for this project did not have the SQLite PDO driver enabled, so tests are configured to use a dedicated MySQL database named `taskify_testing`.
-
-Create it once with:
-
-```bash
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS taskify_testing CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-```
-
-If your environment supports `pdo_sqlite` and you prefer SQLite for tests, you can change the test database settings in `phpunit.xml`.
-
 ## Assumptions and Decisions
 
 - This is a shared team board, so there is no authentication or per-user ownership layer.
 - Blade partials are returned from the backend after task mutations so the frontend stays simple while still feeling responsive.
 - Priority was included as a lightweight organizational aid even though only status tracking was explicitly required.
 - The database starts empty unless the optional seed command is run.
-
-## Important Paths
-
-- `app/Http/Controllers/TaskController.php`
-- `app/Http/Requests/*`
-- `app/Enums/*`
-- `resources/views/tasks/*`
-- `resources/js/task-board.js`
-- `tests/Feature/TaskManagementTest.php`
-

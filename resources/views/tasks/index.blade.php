@@ -17,47 +17,30 @@
         data-delete-url-template="{{ route('tasks.destroy', '__TASK__') }}"
         data-status-url-template="{{ route('tasks.status', '__TASK__') }}"
     >
-        <section class="hero-panel">
-            <div class="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
-                <div class="space-y-5">
-                    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-orange-200">Daily work, clearly organized</p>
-                    <div class="space-y-3">
-                        <h1 class="font-[family-name:var(--font-display)] text-4xl font-semibold leading-tight sm:text-5xl">
-                            A simple task board for teams that need clarity, not clutter.
-                        </h1>
-                        <p class="max-w-2xl text-base text-slate-300 sm:text-lg">
-                            Create tasks, move them through progress states, spot overdue work, and keep the whole team aligned from one clean dashboard.
-                        </p>
+        <section>
+            <div class="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 shadow-sm">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">Team task board</p>
+                        <h1 class="mt-2 text-3xl font-semibold text-slate-950">Keep the team moving forward</h1>
                     </div>
-                    <div class="flex flex-wrap gap-3">
-                        <button type="button" class="btn-primary" data-open-task-modal>
-                            New Task
-                        </button>
-                        <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm text-slate-200">
-                            {{ $metrics['completion_rate'] }}% completion rate
-                        </span>
-                    </div>
+                    <button type="button" class="btn-primary" data-open-task-modal>
+                        New Task
+                    </button>
                 </div>
-                <div class="relative z-10 rounded-[1.75rem] border border-white/12 bg-white/8 p-5 backdrop-blur">
-                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-300">Board Snapshot</p>
-                    <div class="mt-4 space-y-4">
-                        <div>
-                            <p class="text-4xl font-semibold">{{ $metrics['total'] }}</p>
-                            <p class="text-sm text-slate-300">tasks tracked across the team</p>
-                        </div>
-                        <div class="h-2 rounded-full bg-white/10">
-                            <div class="h-2 rounded-full bg-teal-300" style="width: {{ $metrics['completion_rate'] }}%"></div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3 text-sm text-slate-200">
-                            <div class="rounded-2xl border border-white/10 bg-white/6 px-3 py-3">
-                                <p class="text-2xl font-semibold">{{ $metrics['in_progress'] }}</p>
-                                <p>In progress</p>
-                            </div>
-                            <div class="rounded-2xl border border-white/10 bg-white/6 px-3 py-3">
-                                <p class="text-2xl font-semibold">{{ $metrics['overdue'] }}</p>
-                                <p>Overdue</p>
-                            </div>
-                        </div>
+
+                <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                    <div class="rounded-2xl bg-white px-4 py-4 text-sm text-slate-700 shadow-sm">
+                        <p class="font-semibold text-slate-950">Completion rate</p>
+                        <p class="mt-2 text-2xl font-semibold">{{ $metrics['completion_rate'] }}%</p>
+                    </div>
+                    <div class="rounded-2xl bg-white px-4 py-4 text-sm text-slate-700 shadow-sm">
+                        <p class="font-semibold text-slate-950">Total tasks</p>
+                        <p class="mt-2 text-2xl font-semibold">{{ $metrics['total'] }}</p>
+                    </div>
+                    <div class="rounded-2xl bg-white px-4 py-4 text-sm text-slate-700 shadow-sm">
+                        <p class="font-semibold text-slate-950">In progress</p>
+                        <p class="mt-2 text-2xl font-semibold">{{ $metrics['in_progress'] }}</p>
                     </div>
                 </div>
             </div>
@@ -108,9 +91,6 @@
                     <h2 id="modal-title" class="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold text-slate-950">
                         Create a task
                     </h2>
-                    <p id="modal-copy" class="mt-2 text-sm text-slate-500">
-                        Capture what the team needs to do next and keep the board moving.
-                    </p>
                 </div>
                 <button type="button" class="btn-secondary" data-close-modal>Close</button>
             </div>
@@ -124,7 +104,7 @@
                 <div class="grid gap-5 sm:grid-cols-2">
                     <div class="sm:col-span-2">
                         <label for="title" class="mb-2 block text-sm font-semibold text-slate-700">Title</label>
-                        <input id="title" name="title" type="text" class="form-control" maxlength="255" required placeholder="Prepare sprint planning agenda">
+                        <input id="title" name="title" type="text" class="form-control" maxlength="255" required placeholder="Task Title">
                     </div>
 
                     <div>
@@ -159,7 +139,7 @@
                             name="description"
                             class="form-control min-h-32"
                             maxlength="1000"
-                            placeholder="Capture enough detail so anyone on the team can pick this up quickly."
+                            placeholder="Task Details"
                         ></textarea>
                     </div>
                 </div>
